@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+
+/* navbar */
+
+.navbar {
+    height: 10vh;
+    background-color: #4778a9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+    font-size: 1.5rem;
+    margin-left: 75px;
+    color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 75px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.15rem;
+    padding: 35px;
+}
+
+.navbar a:hover {
+    color: #e7e6e6;
+}
+
+
+/* Login Form */
+.login-page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin: 100px;
+}
+
+.title {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 25vw;
+    min-width: 350px;
+    background-color: #4778a9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.label-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+.login-form label {
+    color: white;
+}
+
+.login-form input {
+    margin: 10px;
+    padding: 10px;
+    width: 120px;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+
+.btn-group a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.7rem;
+    text-decoration: underline;
+}
+
+.btn-group button {
+    padding: 10px;
+    margin: 0 10px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e7e6e6;
+    color: #4778a9;
+}
+
+.btn-group button:hover {
+  cursor: pointer;
+    background-color: #317536;
+    color: #e7e6e6;
+    border: 0.1px solid #e7e6e6;
 }

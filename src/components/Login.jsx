@@ -2,13 +2,18 @@
 // 1. make a form and send request to the server -  DONE
 // 2. hook up to a user context system
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/userContext";
 
 const Login = () => {
 
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const {user, putUser} = useContext(UserContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,9 +27,12 @@ const Login = () => {
             },
             body: JSON.stringify({ "Email": email, "Password": password })
         }).then((res) => {
-            if (res.ok) {
-                console.log('Login successful');
-                return res.json(); // Parse response as JSON
+            console.log(res)
+            if(res.ok){
+                console.log('Login successful')
+                console.log("Validating ... ")
+                validate()
+                navigate('/')
             } else {
                 res.json().then((data) => {
                     console.log('Login failed:', data.message); // Log the error message
@@ -36,8 +44,27 @@ const Login = () => {
 
         setEmail('')
         setPassword('')
+    }    
+    
+    const validate = async () => {
+        fetch('/api/validate', {
+            method: "GET"
+        }).then((res) => {
+            if (res.ok) {
+                console.log("Chillin.")
+                return res.json()
+            } else {
+                console.log("not chillin.")
+                throw new Error("Validation Failed.")
+            }
+        }).then((data) => {
+            console.log(data)
+            // save user from data.message
+            putUser(data.message)
+        }).catch( (error) => {
+            console.log(error)
+        })
     }
-
 
     return ( 
         <div className="login-page">

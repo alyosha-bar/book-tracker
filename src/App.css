@@ -30,7 +30,22 @@
 }
 
 .navbar a:hover {
-    color: #e7e6e6;
+    color: #bdbdbd;
+}
+
+.logout {
+    padding: 12px;
+    background-color: #4778a9;
+    border: none;
+    color: white;
+    font-size: 1.15rem;
+}
+
+.logout:hover {
+    cursor: pointer;
+    background-color: #243c55;
+    /* color: #e7e6e6; */
+    border-radius: 5px;
 }
 
 

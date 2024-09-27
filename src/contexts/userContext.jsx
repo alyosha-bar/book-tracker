@@ -1,14 +1,19 @@
-import { createContext, useEffect, useState } from "react";
-
+import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-
+    
+    // const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
     const [user, setUser] = useState(null);
 
     const putUser = (newUser) => {
         setUser(newUser)
+    }
+
+    const logout = () => {
+        setUser(null)
+        // remove authorisation cookies
     }
 
     const updateUser = (newUser) => {
@@ -17,7 +22,7 @@ export const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ user, putUser }}>
+        <UserContext.Provider value={{ user, putUser, logout }}>
             {children}
         </UserContext.Provider>
     )

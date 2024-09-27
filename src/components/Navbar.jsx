@@ -1,14 +1,21 @@
-import { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
+import Cookies from 'universal-cookie'
 
 const Navbar = () => {
 
-    const {user, putUser} = useContext(UserContext)
-    
+    const cookies = new Cookies()
 
-    const logout = () => {
-        console.log("Loggin out.")
+    const {user, logout} = useContext(UserContext)
+    
+    const navigate = useNavigate()
+
+    const logOut = () => {
+        logout()
+        // delete cookie
+        cookies.remove('Authorization')
+        navigate('/login')
     }
 
     return ( 
@@ -19,7 +26,7 @@ const Navbar = () => {
                 <div className='links'> 
                     <Link to='/'> Home </Link>
                     <Link to='/dashboard'> Dashboard </Link>
-                    <button onClick={logout}> Log Out </button>
+                    <button className="logout" onClick={logOut}> Log Out </button>
                 </div>
              : <div className="links">
                     <Link to='/login'> Login </Link>

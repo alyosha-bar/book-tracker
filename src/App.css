@@ -55,6 +55,7 @@
     width: 25vw;
     min-width: 350px;
     background-color: #4778a9;
+    border-radius: 2px;
 }
 
 .label-group {

@@ -15,20 +15,24 @@ const Login = () => {
         console.log('Logging in...')
 
 
-        fetch('/api/login', {
+        fetch('api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email, password})
+            body: JSON.stringify({ "Email": email, "Password": password })
         }).then((res) => {
-            console.log(res)
-            if(res.ok){
-                console.log('Login successful')
+            if (res.ok) {
+                console.log('Login successful');
+                return res.json(); // Parse response as JSON
             } else {
-                console.log('Login failed')
+                res.json().then((data) => {
+                    console.log('Login failed:', data.message); // Log the error message
+                });
             }
-        })
+        }).catch((err) => {
+            console.error('Error:', err); // Log network or server errors
+        });
 
         setEmail('')
         setPassword('')

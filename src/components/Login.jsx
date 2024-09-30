@@ -32,7 +32,6 @@ const Login = () => {
                 console.log('Login successful')
                 console.log("Validating ... ")
                 validate()
-                navigate('/')
             } else {
                 res.json().then((data) => {
                     console.log('Login failed:', data.message); // Log the error message
@@ -41,6 +40,8 @@ const Login = () => {
         }).catch((err) => {
             console.error('Error:', err); // Log network or server errors
         });
+
+        
 
         setEmail('')
         setPassword('')

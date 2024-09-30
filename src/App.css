@@ -135,6 +135,12 @@
     height: 100vh;
 }
 
+.both-lists {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
 .book-list {
     width: 60%;
 }
@@ -201,4 +207,10 @@
     cursor: pointer;
     background-color: #317536;
     color: #e7e6e6;
+}
+
+/* Dashboard */
+
+.dash-page {
+    margin-top: 130px;
 }

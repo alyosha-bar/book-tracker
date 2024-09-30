@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
 import { useContext, useEffect } from 'react';
 import { UserContext } from './contexts/userContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 // check for authorisation token and set user
@@ -50,10 +51,16 @@ function App() {
 
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute> } />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard' element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute> } />
         </Routes>
       </Router>
     </div>
